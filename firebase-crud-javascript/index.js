@@ -1,11 +1,4 @@
-import {
-  onGetTasks,
-  saveTask,
-  deleteTask,
-  getTask,
-  updateTask,
-  getTasks,
-} from "./firebase.js";
+import {onGetTasks, saveTask, deleteTask, getTask, updateTask, getTasks} from "./firebase.js";
 
 const taskForm = document.getElementById("task-form");
 const tasksContainer = document.getElementById("tasks-container");
@@ -31,10 +24,10 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     <p>${task.description}</p>
     <div>
       <button class="btn btn-primary btn-delete" data-id="${doc.id}">
-        🗑 Delete
+        🗑 Eliminar
       </button>
       <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
-        🖉 Edit
+        🖉 Editar
       </button>
     </div>
   </div>`;

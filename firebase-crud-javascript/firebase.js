@@ -1,49 +1,36 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
+// TODO: Agrega SDK para los productos de Firebase que quieras usar
 // https://firebase.google.com/docs/web/setup#available-libraries
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  onSnapshot,
-  addDoc,
-  deleteDoc,
-  doc,
-  getDoc,
-  updateDoc,
-} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
+import {getFirestore, collection, getDocs, onSnapshot, addDoc, deleteDoc, doc, getDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
 
-// Your web app's Firebase configuration
+// La configuración de Firebase de tu aplicación web
 const firebaseConfig = {
-  // Put you credentials here
+  // Pon tus credenciales aquí
+  apiKey: "AIzaSyDkdZo_Q4vlBusBXkaI7nfBxUNypkPpXQ0",
+  authDomain: "fir-crud-js-48fce.firebaseapp.com",
+  projectId: "fir-crud-js-48fce",
+  storageBucket: "fir-crud-js-48fce.appspot.com",
+  messagingSenderId: "942113054516",
+  appId: "1:942113054516:web:c294b749b4035246e84f61"
 };
 
-// Initialize Firebase
+// Inicializar base de fuego
 export const app = initializeApp(firebaseConfig);
-
 export const db = getFirestore();
 
 /**
- * Save a New Task in Firestore
- * @param {string} title the title of the Task
- * @param {string} description the description of the Task
+ * guarda una nueva tarea en firebase
+ * @param {string} title el título de la tarea
+ * @param {string} description la descripcion de la tarea
  */
-export const saveTask = (title, description) =>
-  addDoc(collection(db, "tasks"), { title, description });
-
-export const onGetTasks = (callback) =>
-  onSnapshot(collection(db, "tasks"), callback);
+export const saveTask = (title, description) => addDoc(collection(db, "tasks"), { title, description });
+export const onGetTasks = (callback) => onSnapshot(collection(db, "tasks"), callback);
 
 /**
  *
  * @param {string} id Task ID
  */
 export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
-
 export const getTask = (id) => getDoc(doc(db, "tasks", id));
-
-export const updateTask = (id, newFields) =>
-  updateDoc(doc(db, "tasks", id), newFields);
-
+export const updateTask = (id, newFields) => updateDoc(doc(db, "tasks", id), newFields);
 export const getTasks = () => getDocs(collection(db, "tasks"));
